@@ -56,6 +56,7 @@ import { languageDetector } from './languageDetector';
 
 const server = express();
 server.use(createLobotLanguageDetectorMiddleware(languageDetector));
+// From now on, `req.locale` and `res.locale` will be set to the detected language
 ```
 
 ```tsx
