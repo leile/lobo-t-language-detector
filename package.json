@@ -1,6 +1,6 @@
 {
   "name": "@leile/lobo-t-language-detector",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "author": "Hans Magnus Inderberg",
   "main": "dist/index.js",
