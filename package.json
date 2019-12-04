@@ -1,5 +1,5 @@
 {
-  "name": "lobo-t-language-detector",
+  "name": "@leile/lobo-t-language-detector",
   "version": "0.1.0",
   "license": "MIT",
   "author": "Hans Magnus Inderberg",
