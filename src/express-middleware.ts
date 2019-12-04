@@ -1,9 +1,11 @@
-import { PathLookup } from './path-lookup';
+import { LanguageDetector, StandardEnum, KeyType } from './language-detector';
 import { RequestHandler } from 'express';
 
-export const createMiddleware = (pathLookup: PathLookup) => {
+export const createMiddleware = <Languages extends StandardEnum<KeyType>>(
+  languageDetector: LanguageDetector<Languages>
+) => {
   const i18nextMiddleware: RequestHandler = (req, res, next) => {
-    const language = pathLookup.getLanguageFromPath(req.path);
+    const language = languageDetector.getLanguageFromPath(req.path);
     req.locale = language;
     res.locale = language;
 

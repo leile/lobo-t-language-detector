@@ -1,21 +1,21 @@
 // https://github.com/Microsoft/TypeScript/issues/30611
-type StandardEnum<T> = {
+export type StandardEnum<T> = {
   [id: string]: T | string;
   [nu: number]: string;
 };
 
 type ValueOf<T> = T[keyof T];
 
-type KeyType = string | number;
+export type KeyType = string | number;
 
-export interface PathLookup<Languages extends StandardEnum<KeyType>> {
+export interface LanguageDetector<Languages extends StandardEnum<KeyType>> {
   getLanguageFromPath: (path: string) => ValueOf<Languages>;
 }
 
-export const createPathLookup = <Languages extends StandardEnum<KeyType>>(
+export const initLanguageDetector = <Languages extends StandardEnum<KeyType>>(
   allowedLanguages: Array<ValueOf<Languages>>,
   defaultLanguage: ValueOf<Languages>
-): PathLookup<Languages> => {
+): LanguageDetector<Languages> => {
   const getLanguageFromPath = (path: string): ValueOf<Languages> => {
     const languages = path.match(/\/([a-zA-Z-]*)/g);
     if (languages instanceof Array) {

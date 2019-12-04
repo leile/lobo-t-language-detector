@@ -1,46 +1,46 @@
-import { createPathLookup } from '../src';
+import { initLanguageDetector } from '../src';
 
 enum Language {
   en = 'en',
   nb = 'nb',
 }
 
-describe('path-lookup', () => {
+describe('language-detector', () => {
   it('returns language if language is supported', () => {
-    const pathLookup = createPathLookup<typeof Language>(
+    const languageDetector = initLanguageDetector<typeof Language>(
       Object.values(Language),
       Language.nb
     );
-    const lang = pathLookup.getLanguageFromPath('/en/happy/path');
+    const lang = languageDetector.getLanguageFromPath('/en/happy/path');
     expect(lang).toEqual(Language.en);
   });
 
   it('handles query params in path', () => {
-    const pathLookup = createPathLookup<typeof Language>(
+    const languageDetector = initLanguageDetector<typeof Language>(
       Object.values(Language),
       Language.nb
     );
-    const lang = pathLookup.getLanguageFromPath(
+    const lang = languageDetector.getLanguageFromPath(
       '/en/happy/path?query=wow&this=is&a=nice&query=true'
     );
     expect(lang).toEqual(Language.en);
   });
 
   it('returns default lang if no language found', () => {
-    const pathLookup = createPathLookup<typeof Language>(
+    const languageDetector = initLanguageDetector<typeof Language>(
       Object.values(Language),
       Language.nb
     );
-    const lang = pathLookup.getLanguageFromPath('/se/other/lang');
+    const lang = languageDetector.getLanguageFromPath('/se/other/lang');
     expect(lang).toEqual(Language.nb);
   });
 
   it('returns default lang on full url as input', () => {
-    const pathLookup = createPathLookup<typeof Language>(
+    const languageDetector = initLanguageDetector<typeof Language>(
       Object.values(Language),
       Language.nb
     );
-    const lang = pathLookup.getLanguageFromPath(
+    const lang = languageDetector.getLanguageFromPath(
       'https://www.leile.no/en/other/lang'
     );
     expect(lang).toEqual(Language.nb);

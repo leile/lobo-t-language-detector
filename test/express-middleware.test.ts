@@ -1,4 +1,7 @@
-import { createLobotPathLookupMiddleware, createPathLookup } from '../src';
+import {
+  createLobotLanguageDetectorMiddleware,
+  initLanguageDetector,
+} from '../src';
 import { Request } from 'jest-express/lib/request';
 import { Response } from 'jest-express/lib/response';
 
@@ -9,8 +12,11 @@ enum Language {
 
 describe('express-middleware', () => {
   it('sets locale on request, response and header', () => {
-    const middleware = createLobotPathLookupMiddleware(
-      createPathLookup<typeof Language>(Object.values(Language), Language.nb)
+    const middleware = createLobotLanguageDetectorMiddleware(
+      initLanguageDetector<typeof Language>(
+        Object.values(Language),
+        Language.nb
+      )
     );
 
     const next = jest.fn();
