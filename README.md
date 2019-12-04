@@ -12,8 +12,9 @@ $ yarn add @leile/lobo-t-language-detector
 
 ## `lobo-t-language-detector` at a glance
 
-You tell `lobo-t-language-detector` the patch which contain the language. The lib returns the language or a fallback language.
-It also has a handy little express middleware to detect the language on the server.
+`lobo-t-language-detector`'s intended use is when you have the active language as part of the URL; for example `https://leile.no/en` or `https://leile.no/nb`.
+You give it the path which may contain the language identifier and it will return the active language or a fallback language, if the identifier is not present.
+It also ships with a handy little express middleware to detect the language on the server based on incoming requests.
 
 That's all.
 
