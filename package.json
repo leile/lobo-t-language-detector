@@ -3,6 +3,10 @@
   "version": "1.0.1",
   "license": "MIT",
   "author": "Hans Magnus Inderberg",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/leile/lobo-t-language-detector.git"
+  },
   "main": "dist/index.js",
   "module": "dist/lobo-t-language-detector.esm.js",
   "typings": "dist/index.d.ts",
